@@ -3,6 +3,7 @@ importFrom("stats", "dbeta", "dbinom", "dnorm", "pbeta", "pnorm",
              "qbeta", "qnorm", "rbeta", "weighted.mean",
            "dhyper")
 importFrom("stats", "rbinom", "rgamma", "rnorm", "runif")
-importFrom("LearnBayes", "beta.select", "normal.select")
+importFrom("LearnBayes", "beta.select", "normal.select", "laplace", "simcontour")
 importFrom("gridExtra", "grid.arrange")
+importFrom("metR", "geom_contour_fill")
 import("dplyr", "ggplot2", "shiny")
