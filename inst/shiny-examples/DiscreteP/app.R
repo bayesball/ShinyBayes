@@ -1,3 +1,5 @@
+library(shiny)
+library(ProbBayes)
 
 ui <- fluidPage(
   pageWithSidebar(

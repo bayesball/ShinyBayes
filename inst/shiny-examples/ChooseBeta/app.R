@@ -1,3 +1,6 @@
+library(shiny)
+library(ggplot2)
+library(gridExtra)
 
 ui <- fluidPage(
   h1(id="big-heading", "Constructing a Beta(a, b) Prior From Two Quantiles"),

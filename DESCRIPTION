@@ -3,7 +3,7 @@ Type: Package
 Title: Shiny Apps for Bayesian Inference
 Version: 0.6
 Authors@R: c(person("Jim Albert", email = "albert@bgsu.edu", role = c("aut", "cre")))
-Imports:  LearnBayes, ProbBayes, ggplot2, gridExtra, dplyr, shiny, metR
+Imports:  LearnBayes, ProbBayes, ggplot2, gridExtra, dplyr, shiny, metR, magrittr
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 Author: Jim Albert

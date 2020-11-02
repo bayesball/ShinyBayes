@@ -1,3 +1,11 @@
+library(shiny)
+library(ggplot2)
+library(gridExtra)
+library(magrittr)
+library(dplyr)
+library(ProbBayes)
+library(metR)
+library(tidyr)
 
 # Define UI ----
 ui <- fluidPage(
@@ -124,7 +132,7 @@ server <- function(input, output) {
           log(eta * (1 - eta))
     }
     the_data() %>%
-        select(1:2) -> df
+      select(1:2) -> df
     datapar <- list(df = df,
                     ab = c(input$a, input$b),
                     logn = input$logn)

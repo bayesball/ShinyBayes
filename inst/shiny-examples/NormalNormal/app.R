@@ -1,3 +1,11 @@
+library(shiny)
+library(ggplot2)
+library(ProbBayes)
+library(dplyr)
+library(tidyr)
+library(gridExtra)
+library(runjags)
+library(coda)
 
 # Define UI ----
 ui <- fluidPage(

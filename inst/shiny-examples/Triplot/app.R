@@ -1,3 +1,6 @@
+library(shiny)
+library(ggplot2)
+library(gridExtra)
 
 # Define UI ----
 ui <- fluidPage(
