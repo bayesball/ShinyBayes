@@ -36,7 +36,26 @@ ui <- fluidPage(
 
     # Show a plot of the generated distribution
     mainPanel(
-      plotOutput("distPlot", height="450px")
+      tabsetPanel(type = "tabs",
+                  tabPanel("Description",
+                           br(),
+                           h4('Description'),
+                           p("This app shows a Bayesian
+                             triplot for the situation where one
+                             has binomial data and a beta prior is
+                             assigned to the proportion."),
+                           h4('Using the App'),
+                           p('One uses the sliders to choose the
+                             shape parameters a and b for the beta
+                             prior and the number of successes and
+                             failures in the sample.  The triplot
+                             displays the prior density, the normalized
+                             likelihood and the posterior density.  One
+                             sees how the posterior combines the
+                             information in the prior and the data.')),
+                  tabPanel("Triplot",
+                        plotOutput("distPlot",
+                           height="450px")))
     )
   ))
 

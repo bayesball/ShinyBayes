@@ -13,14 +13,6 @@ ui <- fluidPage(
   tags$style(HTML("#big-heading{color: red;}")),
   fluidRow(
     column(4, wellPanel(
-      h4(id="model-heading", "Model:"),
-      tags$style(HTML("#model-heading{color: red;}")),
-      h5("y_1, ..., y_N indep, y_i is normal(mu_j[group_i], sigma)"),
-      h5("mu_1, ..., mu_J iid normal(mu, tau)"),
-      h5("mu is t(3, mu_0, tau_0)"),
-      h5("tau is t(3, 0, tau_1) I(tau > 0)"),
-      h5("sigma is t(3, 0, tau_2) I(sigma > 0)"),
-      hr(),
       h4(id="data-heading", "Read in Data [y, group]:"),
       tags$style(HTML("#data-heading{color: red;}")),
       fileInput("file1", "CSV File",
@@ -60,6 +52,37 @@ ui <- fluidPage(
     )),
     column(8,
       tabsetPanel(type = "tabs",
+                  tabPanel("Story",
+                           br(),
+                           h4('Description'),
+                           p('This app illustrates an JAGS fit of the following
+                    Normal/Normal multilevel model'),
+                    p('We observe independent observations y1, ..., yN,
+                      where yi is normal(mu_j[group_i], sigma).  Assume the
+                      means mu_1, ..., mu_J are a random sample from a
+                      normal(mu, tau) distribution.  At the
+                      last stage, mu and tau are assumed independent,
+                      where mu is t(3, mu_0, tau_0) and tau is
+                      t(3, 0, tau_1) I(tau > 0).  Also sigma is distributed
+                      t(3, 0, tau_2) I(sigma > 0).
+                      '),
+
+                    h4('Using the App'),
+                    p('One inputs the data from a csv file where the first
+                      column contains the yi and the second column contains
+                      the group number group_i.  One inputs values of the
+                      hyperparameters mu_0, tau_0, tau_1, ,
+                      and tau_2, and the number of simulations from the
+                      posterior distribution.  The Update button will start
+                      sampling from the posterior using JAGS.'),
+                    p('The outputs are Data, the listing of the observed data,
+                    JAGS script, the JAGS script of the multilevel model,
+                      Marginals, density estimates of the
+                      marginal posterior densities of mu, sigma, tau.  The
+                      tab Summaries provides summaries of the posterior density
+                      and Shrinkage shows how the observed group means are
+                      shrunk to the posterior means of the mu_j.')
+                  ),
             tabPanel("Data",
                      tableOutput("contents")),
             tabPanel("JAGS Script",

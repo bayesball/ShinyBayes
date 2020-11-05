@@ -11,14 +11,6 @@ ui <- fluidPage(
   tags$style(HTML("#big-heading{color: red;}")),
   fluidRow(
     column(4, wellPanel(
-     h4(id="model-heading", "Model:"),
-     tags$style(HTML("#model-heading{color: red;}")),
-      h5("s1 is Binom(s1 + f1, p1)"),
-      h5("s2 is Binom(s2 + f2, p2)"),
-      h5("theta1 = logit(p1) - logit(p2)"),
-      h5("theta2 = logit(p1) + logit(p2)"),
-      h5("(theta1, theta2) is Uniform"),
-      h5('----------------------------'),
       h4(id="data-heading", "Enter Successes and Failures:"),
       tags$style(HTML("#data-heading{color: red;}")),
       h5(id="data-heading1", "Sample 1:"),
@@ -42,6 +34,31 @@ ui <- fluidPage(
     )),
     column(8,
            tabsetPanel(type = "tabs",
+                       tabPanel("Model",
+                                h4("Description"),
+                                p('We have two independent samples
+                                  where y1 is binomial(n1, p1) and
+                                  y2 is binomial(n2, p2).  We
+                                  reparametrize to the difference in
+                                  logits theta1 = logit(p1) - logit(p2)
+                                  and the sum of logits theta2 =
+                                  logit(p1) + logit(p2).  We assume that
+                                  the prior on (theta1, theta2) is
+                                  uniform.'),
+                                h4("Using the App"),
+                                p('One enters in the number of successes
+                                  and the number of failures for each
+                                  of the two samples.  Also one inputs
+                                  the number of posterior simulations.'),
+                                p("The Data tab shows the observed data,
+                                  the Contour tab displays a contour
+                                  plot of the joint posterior density
+                                  of (theta1, theta2).  The Marginals tab
+                                  displays density estimates of the
+                                  marginal posterior densities of theta1
+                                  and theta2.  The Summaries tab gives
+                                  inferential summaries of the posterior.
+                                  ")),
                        tabPanel("Data",
                                 tableOutput("stats")),
                        tabPanel("Contour",

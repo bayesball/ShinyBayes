@@ -14,7 +14,7 @@ ui <- fluidPage(
                   value = c(0.5, 0.8)),
       hr(),
       sliderInput("Prob",
-                  "Choose Probability Content for Middle Interval:",
+                  "Probability Content for Middle Interval:",
                   min = 0.50,
                   max = 0.95,
                   value = 0.9),
@@ -27,8 +27,31 @@ ui <- fluidPage(
     ),
 
     mainPanel(
-      plotOutput("distPlot",
-                 height = "550px")
+      tabsetPanel(type = "tabs",
+                  tabPanel("Description",
+                           br(),
+                           h4('Description'),
+                           p('This app is a tool for constructing a beta
+                             prior for a proportion.'),
+                           h4('Using the App'),
+                           p("One uses the slider to input one's opinion
+                             about the location of the median and the 90th
+                             percentile of the proportion."),
+                           p('The app displays the matching beta curve and
+                             the values of the beta shape parameters.
+                             The interval that covers the middle probability
+                             content of the proportion is displayed where
+                             one can choose the value of the probability
+                             content.'),
+                           p('The app also displays the corresponding
+                             prior predictive distribution of the
+                             number of successes for a future sample
+                             of size n.  The value of n can be selected by
+                             the slider.')),
+                  tabPanel("Choose Prior",
+                           plotOutput("distPlot",
+                             height = "550px"))
+      )
     )
   )
 )

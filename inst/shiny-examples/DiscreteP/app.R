@@ -34,6 +34,29 @@ ui <- fluidPage(
   ),
   mainPanel(
     tabsetPanel(type = "tabs",
+                tabPanel("Description",
+                         br(),
+                         h4('Description'),
+                         p('This app illustrates Bayes inference
+                         for a proportion using a discrete prior.
+                         One samples s from a binomial(n, p)
+                         distribution and the proportion p
+                         has a discrete prior on the values
+                         0, 0.1, 0.2, ..., 1.'),
+                         h4("Using the App"),
+                         p('One inputs the prior by entering in
+                           weights for the 11 possible values of
+                           the proportion, and inputs the data
+                           by entering values for the number of
+                           successes s and the number of failures
+                           f = n - s.  To get the posterior
+                           calculations, press the Update button.'),
+                         p('The Table tab displays the prior and
+                           posterior probabilities, the Graph tab
+                           displays parallel graphs of the prior
+                           and posterior, and the Summary tab
+                           provides inferential summaries.')
+                        ),
                 tabPanel("Table",
                          dataTableOutput("table")),
                 tabPanel("Graph",

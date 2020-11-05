@@ -14,13 +14,6 @@ ui <- fluidPage(
   tags$style(HTML("#big-heading{color: red;}")),
   fluidRow(
     column(4, wellPanel(
-      h4(id="model-heading", "Model:"),
-      tags$style(HTML("#model-heading{color: red;}")),
-      h5("y1, ..., yn indep, yi is binomial(ni, pi)"),
-      h5("p1, ..., pn iid beta(K eta, K (1 - eta))"),
-      h5("eta is beta(a, b)"),
-      h5("log K is logistic(logn, 1)"),
-      hr(),
       h4(id="data-heading", "Read in Data [y, n]:"),
       tags$style(HTML("#data-heading{color: red;}")),
       fileInput("file1", "CSV File",
@@ -56,6 +49,33 @@ ui <- fluidPage(
 #           tags$style(HTML("#stats-heading{color: red;}")),
 #           verbatimTextOutput("stats2")
       tabsetPanel(type = "tabs",
+                  tabPanel("Story",
+                           br(),
+                           h4('Description'),
+                           p('This app fits the following Beta/Binomial multilevel
+                      model using the JAGS software.'),
+                      p('We observe independent observations y1, ..., yN,
+                      where yi is binomial(ni, pi).  Assume p1, ..., pN
+                      are a random sample from a beta distribution with
+                      shape parameters K eta and K (1 - eta).  At the
+                      last stage, eta is assumed beta(a, b) and log K
+                      is logistic with location logn and scale 1.'),
+                      h4('Using the App'),
+                      p('One inputs the data from a csv file where the first
+                      column contains the yi and the second column contains
+                      the ni.  One inputs values of the hyperparameters a, b,
+                      and logn, and the number of simulations from the
+                      posterior distribution.  The Update button will start
+                      MCMC sampling from the posterior using JAGS.'),
+                      p('The outputs are Data, the listing of the observed data,
+                      JAGS Script, a listing of the JAGS model
+                      script, Contour, a contour graph of the joint posterior of
+                      logit eta and log K, Marginals, density estimates of the
+                      marginal posterior densities of logit eta and log K.  The
+                      tab Summaries provides summaries of the posterior density
+                      and Shrinkage shows how the observed rates yi / ni are
+                      shrunk to the posterior means of the pi.')
+                  ),
             tabPanel("Data",
                      tableOutput("contents")),
             tabPanel("JAGS Script",
