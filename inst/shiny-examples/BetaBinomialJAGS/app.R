@@ -70,8 +70,8 @@ ui <- fluidPage(
                       p('The outputs are Data, the listing of the observed data,
                       JAGS Script, a listing of the JAGS model
                       script, Contour, a contour graph of the joint posterior of
-                      logit eta and log K, Marginals, density estimates of the
-                      marginal posterior densities of logit eta and log K.  The
+                      eta and log K, Marginals, density estimates of the
+                      marginal posterior densities of eta and log K.  The
                       tab Summaries provides summaries of the posterior density
                       and Shrinkage shows how the observed rates yi / ni are
                       shrunk to the posterior means of the pi.')

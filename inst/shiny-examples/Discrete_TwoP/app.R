@@ -48,33 +48,8 @@ ui <- fluidPage(
            tabsetPanel(type = "tabs",
                        tabPanel("Story",
           br(),
-          h4('Description'),
-          p('This app considers the sampling model where s1 is binomial
-          with sample size s1 + f1 and probability of success p1 and
-          s2 (independent of s1) is binomial with sample size s2 + f2 and probability of
-          success p2.'),
-          p('Consider a prior where each of the proportions p1 and p2 are assumed to
-            take on N equally spaced values between LO and HI. One can
-            either have a UNIFORM prior where all pairs (p1, p2) are
-            given the same probability, or a TESTING prior where
-            P(p1 = p2) = 0.5 and equal probabilities are
-            assigned to all off-diagonal pairs where p1 ≠ p2,
-            and uniform probabilities for the pairs along the diagonal
-            where p1 = p2.'),
-          h4('Using the App'),
-          p('One inputs the prior by choosing Limits for Each P (the LO and HI
-          values), the # of Values N,
-            and the Prior Type (UNIFORM or TESTING).  In addition, one
-            inputs the number of successes and failures for each sample (s1, f1,
-          s2, f2).'),
-          p('The Data tab shows the table of observed data.'),
-          p('The Prior tab displays the joint prior of (p1, p2).'),
-          p('The Post tab displays the joint posterior of (p1, p2).'),
-          p('The Prior/Post of Diff tab displays the prior and posterior
-            probability functions of the difference in probabilities p1 - p2.'),
-          p('The Post CDF of Diff tab displays the cumulative distribution
-            function of the posterior of the difference p1 - p2.')
-
+          img(src="model.png",
+              height = 424, width = 530)
           ),
                        tabPanel("Data",
                                 tableOutput("stats")),
