@@ -53,8 +53,9 @@ ui <- fluidPage(
                                 h4('Description'),
                                 p('This app illustrates an exact fit of the following
                     Beta/Binomial multilevel model'),
-                    p('We observe independent observations y1, ..., yN,
-                      where yi is binomial(ni, pi).  Assume p1, ..., pN
+                    p('We observe independent
+                      observations y_1, ..., y_N,
+                      where y_i is binomial(n_i, p_i).  Assume p_1, ..., p_N
                       are a random sample from a beta distribution with
                       shape parameters K eta and K (1 - eta).  At the
                       last stage, eta is assumed beta(a, b) and log K
